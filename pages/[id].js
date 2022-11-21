@@ -38,14 +38,12 @@ export default function UserPage(props){
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: 3,
+        user_id: props.id,
         message: userMessage,
       }),
     })
       .then((r) => r.json()).then((res) => console.log(res))
   }
-
-    console.log(props)
 
     return (
             <div className="App">
