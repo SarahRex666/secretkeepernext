@@ -10,7 +10,6 @@ export async function getStaticPaths() {
         fallback: false,
     }
 }
-// const paths = [{ params: { id: '1' } }, { params: { id: '2' } }]
 
 const paths = users.map((user) => {
     return { params: { id: user.id.toString() } }
@@ -34,6 +33,7 @@ export default function UserPage(props){
     event.preventDefault()
     fetch("https://secretkeeperproject.herokuapp.com/message", {
       method: "POST",
+      withCredentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
