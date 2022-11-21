@@ -46,10 +46,10 @@ export default function UserPage(props){
   }
 
     return (
-            <div className="App">
+      <div className="App">
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="tell me a secret" onChange={handleChange}/>
-        <input type="submit" /></form>
+      <input type="text" placeholder="tell me a secret" onChange={handleChange}/>
+      <input type="submit" /></form>
     </div>
     )
 }
