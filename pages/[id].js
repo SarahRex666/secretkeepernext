@@ -49,16 +49,16 @@ export default function UserPage(props){
   }
 
     return (
-    <div  style={{background: "#252827"}}>
+    <div style={{background: "#252827"}}>
     <div class="d-flex justify-content-center">
-      <Image src="https://i.ibb.co/XFcknLB/spyro.png"></Image>
+      <Image className="mx-5 my-5" src="https://i.ibb.co/XFcknLB/spyro.png"></Image>
     </div>
-    <div class="d-flex justify-content-center text-align-center">
-    <Form onSubmit={handleSubmit} >
+    <div >
+    <Form className="mx-5" onSubmit={handleSubmit} >
       <Form.Group className="mx-5" controlId="userMessage">
-        <Form.Control as="textarea" placeholder="Tell Me A Secret" rows={5} onChange={handleChange} />
+        <Form.Control as="textarea" placeholder="Tell Me A Secret" rows={10} onChange={handleChange} />
       </Form.Group>
-      <Button variant="secondary" type="submit">
+      <Button className="mx-5 my-5" variant="secondary" type="submit">
         Submit
       </Button>
     </Form>
