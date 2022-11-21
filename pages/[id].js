@@ -32,8 +32,7 @@ export default function UserPage(props){
     setUserMessage(e.target.value)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const handleSubmit = () => {
     fetch("https://secretkeeperproject.herokuapp.com/message", {
       method: "POST",
       withCredentials: "include",
@@ -45,7 +44,7 @@ export default function UserPage(props){
         message: userMessage,
       }),
     })
-      .then((r) => r.json()).then((res) => console.log(res))
+      .then((r) => r.json()).then(setUserMessage(''))
   }
 
     return (
