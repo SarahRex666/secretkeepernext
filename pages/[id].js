@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react"
+import { Form, FormControl, FormGroup, Container, Row, Column, Image } from "react-bootstrap"
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const res = await fetch('https://secretkeeperproject.herokuapp.com/users')
@@ -46,10 +49,20 @@ export default function UserPage(props){
   }
 
     return (
-      <div className="App">
-      <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="tell me a secret" onChange={handleChange}/>
-      <input type="submit" /></form>
+    <div  style={{background: "#252827"}}>
+    <div class="d-flex justify-content-center">
+      <Image src="https://i.ibb.co/XFcknLB/spyro.png"></Image>
+    </div>
+    <div class="d-flex justify-content-center text-align-center">
+    <Form onSubmit={handleSubmit} >
+      <Form.Group className="mx-5" controlId="userMessage">
+        <Form.Control as="textarea" placeholder="Tell Me A Secret" rows={5} onChange={handleChange} />
+      </Form.Group>
+      <Button variant="secondary" type="submit">
+        Submit
+      </Button>
+    </Form>
+    </div>
     </div>
     )
 }
