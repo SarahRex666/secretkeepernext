@@ -3,20 +3,23 @@ import { Form, FormControl, FormGroup, Container, Row, Column, Image } from "rea
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-const res = await fetch('https://secretkeeperproject.herokuapp.com/users')
-const users = await res.json()
-
 export async function getStaticPaths() {
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
     return {
-        paths,
-        fallback: false,
+      paths: [],
+      fallback: 'blocking',
     }
-}
+  }
 
-const paths = users.map((user) => {
+  const res = await fetch('https://secretkeeperproject.herokuapp.com/users')
+  const users = await res.json()
+
+  const paths = users.map((user) => {
     return { params: { id: user.id.toString() } }
-})
+  })
+
+    return { paths, fallback: false }
+}
 
 export async function getStaticProps({ params }) {
   return {
