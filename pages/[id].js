@@ -10,16 +10,8 @@ export async function getStaticPaths() {
   const paths = users.map((user) => {
     return { params: { id: user.id.toString() } }
   })
-  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-    return {
-      paths: paths,
-      fallback: 'blocking',
-    }
-  }
-
-
-
-    return { paths, fallback: false }
+  
+    return { paths, fallback: 'blocking', }
 }
 
 export async function getStaticProps({ params }) {
