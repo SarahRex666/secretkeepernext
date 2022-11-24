@@ -4,19 +4,20 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export async function getStaticPaths() {
-  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-    return {
-      paths: [],
-      fallback: 'blocking',
-    }
-  }
-
   const res = await fetch('https://secretkeeperproject.herokuapp.com/users')
   const users = await res.json()
 
   const paths = users.map((user) => {
     return { params: { id: user.id.toString() } }
   })
+  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+      paths: paths,
+      fallback: 'blocking',
+    }
+  }
+
+
 
     return { paths, fallback: false }
 }
